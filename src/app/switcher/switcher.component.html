@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<header>
+  <app-login-header></app-login-header>
+</header>
+
+<div class="card mx-auto" style="width: 95%;">
+  <div class="card-body">
+
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">contacts</mat-icon>
+          Create Contact
+        </ng-template>
+
+        <br>
+        <h3 class="card-title">Create new contact</h3>
+        <form #cForm="ngForm">
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" appRestricted required [formControl]="fnames" #fname>
+            <mat-error *ngIf="nname.invalid">You must enter a valid value of length b/w 5 and 10</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput required [formControl]="nname" #lname>
+            <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Nick Name</mat-label>
+            <input type="text" matInput required [formControl]="nname" #nnamex>
+            <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Address</mat-label>
+            <input type="text" matInput required [formControl]="nname" #adr>
+            <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <br>
+          <br>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label id="dob">DoB</mat-label>
+            <input matInput [matDatepicker]="picker" required [formControl]="nname" #dob>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>City</mat-label>
+            <input type="text" type="text" matInput required [formControl]="nname" #city>
+            <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>State</mat-label>
+            <input type="text" matInput required [formControl]="nname" #state>
+            <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Country</mat-label>
+            <input type="text" matInput required [formControl]="nname" #country>
+            <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>ZIP Code</mat-label>
+            <input type="number" matInput required [formControl]="nname" #zipcode>
+            <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput required [formControl]="mail" #email>
+            <mat-error *ngIf="mail.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Phones</mat-label>
+            <input type="number" matInput required [formControl]="phnoa" #phone>
+            <mat-error *ngIf="phnoa.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <div style="display: flex;justify-content: center;">
+            <button mat-flat-button color="accent" [disabled]="nname.invalid||mail.invalid||phnoa.invalid"
+              (click)="createContact(fname.value,lname.value,nnamex.value,adr.value,dob.value,city.value,state.value,country.value,zipcode.value,email.value,phone.value)">Create
+              Contact</button>
+          </div>
+        </form>
+      </mat-tab>
+
+      <mat-tab>
+        <br>
+        <br>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">list_alt</mat-icon>
+          List Contacts
+        </ng-template>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width:99%;margin-left:auto;margin-right:auto;">
+
+          <ng-container matColumnDef="Contact Id">
+            <th mat-header-cell *matHeaderCellDef> Contact Id </th>
+            <td mat-cell *matCellDef="let element;"> {{element.cid}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="First Name">
+            <th mat-header-cell *matHeaderCellDef> First Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.fname}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Last Name">
+            <th mat-header-cell *matHeaderCellDef> Last Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.lname}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Nick Name">
+            <th mat-header-cell *matHeaderCellDef> Nick Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.nnames}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="DoB">
+            <th mat-header-cell *matHeaderCellDef> DoB </th>
+            <td mat-cell *matCellDef="let element"> {{element.dobs}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.adrs}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="City">
+            <th mat-header-cell *matHeaderCellDef> City </th>
+            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="State">
+            <th mat-header-cell *matHeaderCellDef> State </th>
+            <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Country">
+            <th mat-header-cell *matHeaderCellDef> Country </th>
+            <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ZIP Code">
+            <th mat-header-cell *matHeaderCellDef> ZIP Code </th>
+            <td mat-cell *matCellDef="let element"> {{element.zip}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element;let i = index">
+              <button mat-flat-button color="primary" (click)="editButton(element['cid'])" #bedit>Edit</button>&nbsp;&nbsp;
+              <button mat-flat-button color="accent" (click)="viewButton(element['cid'])" #bview>View</button>&nbsp;&nbsp;
+              <button mat-flat-button color="warn" (click)="deleteButton(i,element['cid'])" #bdelete>Delete</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <br>
+        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[1, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+        <button type="button" class="btn btn-secondary" (click)="reloadx()">Update Data</button>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">search</mat-icon>
+          Contact ID Search
+        </ng-template>
+
+        <h3 class="card-title">Search Contact by ID</h3>
+
+        <mat-form-field class="form-full-width" appearance="outline">
+          <mat-label>Contact Id</mat-label>
+          <input type="text" matInput required [formControl]="nname" #cid>
+          <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <div style="display: flex;justify-content: center;">
+          <button mat-flat-button color="accent" [disabled]="nname.invalid" (click)="contactSearch(cid.value)">Search by ID</button>
+        </div>
+      </mat-tab>
+
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">delete</mat-icon>
+          Delete by ID
+        </ng-template>
+
+        <h3 class="card-title">Delete Contact by ID</h3>
+
+        <mat-form-field class="form-full-width" appearance="outline">
+          <mat-label>Contact Id</mat-label>
+          <input type="text" matInput required [formControl]="nname" #did>
+          <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <div style="display: flex;justify-content: center;">
+          <button mat-flat-button color="accent" [disabled]="nname.invalid" (click)="deleteContact(did.value)">Delete by ID</button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<h2 mat-dialog-title>Update Item by ID</h2>
+<mat-dialog-content class="mat-typography">
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Item Name</mat-label>
+    <input type="text" matInput required [formControl]="nname" #uiname>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Item Type</mat-label>
+    <input type="text" matInput required [formControl]="nname" #uitype>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Item Discription</mat-label>
+    <input type="text" matInput required [formControl]="nname" #uidisc>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions style="align-content: center;">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="accent" (click)="updateItem(uiname.value,uitype.value,uidisc.value)" [disabled]="nname.invalid">Update Item</button>
+</mat-dialog-actions>

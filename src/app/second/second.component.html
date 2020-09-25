@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<header>
+  <app-header></app-header>
+</header>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="card mx-auto" style="width: 40%;">
+  <div class="card-body">
+    <h3 class="card-title">Welcome! Create User</h3>
+    <h4 class="card-subtitle mb-2 text-muted" style="margin-top: -15px;">Signup for new account here</h4>
+
+    <hr>
+
+    <mat-form-field appearance="outline" class="form-full-width">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput required [formControl]="name" #namex>
+      <mat-icon matSuffix>account_box</mat-icon>
+      <mat-hint>Jarvis</mat-hint>
+      <mat-error *ngIf="name.invalid">{{getnameErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-full-width">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput required [formControl]="user" #mail>
+      <mat-icon matSuffix>login</mat-icon>
+      <mat-hint>someone@example.com</mat-hint>
+      <mat-error *ngIf="user.invalid">{{getmailErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-full-width">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput required [formControl]="pass" #passx>
+      <mat-icon matSuffix>https</mat-icon>
+      <mat-hint>Password</mat-hint>
+      <mat-error *ngIf="pass.invalid">{{getpassErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <br>
+    <br>
+
+    <div style="display: flex;justify-content: center;">
+        <button mat-flat-button color="primary" [disabled]="pass.invalid||user.invalid||name.invalid" (click)="loginAction(namex.value,mail.value,passx.value)">Sign Up</button>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>

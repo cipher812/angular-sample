@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<div class="card mx-auto" style="width: 40%;">
+  <div class="card-body">
+    <h3 class="card-title">New here? Sign-Up</h3>
+    <h4 class="card-subtitle mb-2 text-muted" style="margin-top: -15px;">Signup for new account if its your first time here</h4>
+
+    <hr>
+
+    <mat-form-field class="form-full-width">
+      <mat-label>Employee name</mat-label>
+      <input matInput placeholder="your name" #name>
+      <mat-hint id="name">Enter correct name</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-full-width">
+      <mat-label>Employee Id</mat-label>
+      <input matInput placeholder="INVXXXX" #id>
+      <mat-hint id="aid">Enter correct employee id</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-full-width">
+      <mat-label>Phone Number</mat-label>
+      <input type="number" matInput placeholder="1234567890" #number>
+      <mat-hint id="no">Enter Phone numbers</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-full-width">
+      <mat-label>Gender</mat-label>
+      <input matInput placeholder="M/F" #gender>
+      <mat-hint id="gen">Select Gender</mat-hint>
+    </mat-form-field>
+
+    <br>
+    <br>
+
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label id="dob">Choose DoB</mat-label>
+      <input matInput [matDatepicker]="picker" #date>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint id="dob"></mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="someone@example.com" #email>
+      <mat-hint id="mail">Enter email</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-full-width">
+      <mat-label>Address</mat-label>
+      <input matInput placeholder="Area 51,Nevada" #adress>
+      <mat-hint id="adr">Enter Address</mat-hint>
+    </mat-form-field>
+
+    <br>
+    <br>
+
+    <mat-form-field class="form-full-width" appearance="fill">
+      <mat-label>Select Post</mat-label>
+      <mat-select  #designation>
+        <mat-option value="Mobile">Mobile</mat-option>
+        <mat-option value="Desktop">Desktop</mat-option>
+        <mat-option value="Systems">Systems</mat-option>
+      </mat-select>
+      <mat-hint id="des"></mat-hint>
+    </mat-form-field>
+
+    <div style="display: flex;justify-content: center;">
+      <button type="submit" class="btn blue-gradient"
+        (click)="showText(name.value,id.value,number.value,gender.value,date.value,email.value,adress.value,designation.value)">Sign-up</button>
+      <button type="reset" class="btn peach-gradient">Reset</button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<h2 mat-dialog-title>Edit Contact</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input type="text" matInput required [formControl]="nname" #fname>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input type="text" matInput required [formControl]="nname" #lname>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Nick Name</mat-label>
+    <input type="text" matInput required [formControl]="nname" #nnamex>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Address</mat-label>
+    <input type="text" matInput required [formControl]="nname" #adr>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <br>
+  <br>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label id="dob">DoB</mat-label>
+    <input matInput [matDatepicker]="picker" required [formControl]="nname" #dob>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>City</mat-label>
+    <input type="text" type="text" matInput required [formControl]="nname" #city>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>State</mat-label>
+    <input type="text" matInput required [formControl]="nname" #state>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Country</mat-label>
+    <input type="text" matInput required [formControl]="nname" #country>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>ZIP Code</mat-label>
+    <input type="number" matInput required [formControl]="nname" #zipcode>
+    <mat-error *ngIf="nname.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="text" matInput required [formControl]="mail" #email>
+    <mat-error *ngIf="mail.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form-full-width" appearance="outline">
+    <mat-label>Phones</mat-label>
+    <input type="number" matInput required [formControl]="phnoa" #phone>
+    <mat-error *ngIf="phnoa.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" color="accent" [disabled]="nname.invalid && (nname.dirty || nname.touched)||mail.invalid && (mail.dirty || mail.touched)||phnoa.invalid && (phone.dirty || phone.touched)"
+  (click)="updateContact(fname.value,lname.value,nnamex.value,adr.value,dob.value,city.value,state.value,country.value,zipcode.value,email.value,phone.value)">Update
+  Contact</button>
+</mat-dialog-actions>

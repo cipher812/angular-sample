@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<h1 mat-dialog-title>Search Details </h1>
+<div mat-dialog-content class="mat-typography">
+  <table class="table table-bordered">
+    <tr>
+      <td>
+        <h3>Item Id:</h3>
+      </td>
+      <td>
+        <h3>{{fromPage['itemId']}}</h3>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3>Item Name:</h3>
+      </td>
+      <td>
+        <h3>{{fromPage['name']}}</h3>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3>Item Type:</h3>
+      </td>
+      <td>
+        <h3>{{fromPage['type']}}</h3>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3>Item Discription:</h3>
+      </td>
+      <td>
+        <h3>{{fromPage['description']}}</h3>
+      </td>
+    </tr>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button color="accent" mat-dialog-close>Close</button>
+</div>
